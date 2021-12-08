@@ -8,26 +8,41 @@
     <title>Document</title>
     <style>
         #color {
-            width: 150px;
+            width: 80vw;
             height: 100px;
             border: 3px solid rgb(119, 64, 64);
             text-align: center;
             margin: 0 auto;
             margin-bottom: 30pxs;
+    line-height: 100px;
         }
 
         #style {
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            margin-top: 20px;
             border: 2px solid grey;
+            flex-wrap: wrap;
+            flex-direction: column;
+           text-align: center;
+           margin: 20px;
+           padding: 5px;
         }
-
         #colorbic1,
         #colorbic2,
         #colorbic3 {
-            mar padding: 5px;
+            display: block;
+            margin: 0 auto;
+            padding: 5px;
+            width: 50px;
+            height: 20px;
+        }
+        #btn1{
+            font-size: 1.5rem;
+            display: block;
+            margin: 0 auto;
+            border: 2px solid green;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px;
         }
     </style>
 
@@ -35,17 +50,17 @@
 
 <body>
     <div id="color">
-        aref
+        HIT THE MAGICBUTTON
     </div>
     <div id="style">
-        <b>choose a number</b>
+        <b>choose a number from 0-255</b>
         <input type="number" id="colorbic1" onfocus="this.value=''" value="number from 0-255"></input>
-        <b>choose a number</b>
+        <b>choose a number from 0-255</b>
         <input type="number" id="colorbic2" onfocus="this.value=''" value="number from 0-255"></input>
-        <b>choose a number</b>
+        <b>choose a number from 0-255</b>
         <input type="number" id="colorbic3" onfocus="this.value=''" value="number from 0-255"></input>
     </div>
-    <button id="btn1">button</button>
+    <button id="btn1">Magic Color</button>
     <script>
         let r = "";
         let b = "";
@@ -53,37 +68,38 @@
         let btn = document.getElementById("btn1");
 
         btn.onclick = function () {
-            r = document.getElementById("colorbic1").value;
-            g = document.getElementById("colorbic2").value;
-            b = document.getElementById("colorbic3").value;
+                r = document.getElementById("colorbic1").value;
+                g = document.getElementById("colorbic2").value;
+                b = document.getElementById("colorbic3").value;
 
-            function alert() {
-                if (r > 255) {
-                    alert("number should be smller than 255");
-                    else {
-                        alert("go")
+                function alert1() {
+                    if ((r > 255 || r < 0) || (g > 255 || g < 0) || (b > 255 || b < 0)){
+                            alert("number should be between 0-255")
+                        }
+                        else {
+                            console.log("go");
+                        }
                     }
-                }
-            }
+                    alert1();
 
-            function my(r, g, b) {
-                y = "rgb(" + r + "," + g + "," + b + ")";
-            }
-            my(r, g, b);
+                    function my(r, g, b) {
+                        y = "rgb(" + r + "," + g + "," + b + ")";
+                    }
+                    my(r, g, b);
 
-            function myFunction() {
-                let x = document.getElementById("color");
-                x.style.backgroundColor = y;
-            }
-            myFunction();
+                    function myFunction() {
+                        let x = document.getElementById("color");
+                        x.style.backgroundColor = y;
+                    }
+                    myFunction();
 
-            function restfileds() {
-                r = document.getElementById("colorbic1").value = "";
-                g = document.getElementById("colorbic2").value = "";
-                b = document.getElementById("colorbic3").value = "";
-            }
-            restfileds();
-        };
+                    function restfileds() {
+                        r = document.getElementById("colorbic1").value = "";
+                        g = document.getElementById("colorbic2").value = "";
+                        b = document.getElementById("colorbic3").value = "";
+                    }
+                    restfileds();
+                };
     </script>
 </body>
 
