@@ -7,14 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #color {
-            width: 80vw;
-            height: 100px;
-            border: 3px solid rgb(119, 64, 64);
+       
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+        #color,
+        #color2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-self: center;
             text-align: center;
-            margin: 0 auto;
-            margin-bottom: 30pxs;
-    line-height: 100px;
+            align-self: center;
+            width: 80%;
+            color: rgb(185, 118, 30);
+            font-family:'Architects Daughter', cursive;
+            height: 100px;
+            border: 3px solid rgb(232, 245, 115);
+            line-height: 1.5;
+            font-size: 2rem;
+            margin: 20px auto;
+            border-radius: 5px;
         }
 
         #style {
@@ -23,10 +34,15 @@
             border: 2px solid grey;
             flex-wrap: wrap;
             flex-direction: column;
-           text-align: center;
-           margin: 20px;
-           padding: 5px;
+            text-align: center;
+            margin: 20px;
+            padding: 5px;
         }
+b{
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    color: rgb(101, 109, 32);
+}
         #colorbic1,
         #colorbic2,
         #colorbic3 {
@@ -36,11 +52,12 @@
             width: 50px;
             height: 20px;
         }
-        #btn1{
+
+        #btn1 {
             font-size: 1.5rem;
             display: block;
             margin: 0 auto;
-            border: 2px solid green;
+            border: 2px solid rgb(31, 112, 31);
             border-radius: 10px;
             box-shadow: 2px 2px 2px;
         }
@@ -50,15 +67,19 @@
 
 <body>
     <div id="color">
-        HIT THE MAGICBUTTON
+        HIT THE MAGICBUTTON<br>
+        FIRST COLOR
+    </div>
+    <div id="color2">
+        HIT THE MAGICBUTTON<br>SECOND COLOR
     </div>
     <div id="style">
         <b>choose a number from 0-255</b>
-        <input type="number" id="colorbic1" onfocus="this.value=''" value="number from 0-255"></input>
+        <input type="number" id="colorbic1" onfocus="this.value=''" value="number from 0-255">R</input>
         <b>choose a number from 0-255</b>
-        <input type="number" id="colorbic2" onfocus="this.value=''" value="number from 0-255"></input>
+        <input type="number" id="colorbic2" onfocus="this.value=''" value="number from 0-255">G</input>
         <b>choose a number from 0-255</b>
-        <input type="number" id="colorbic3" onfocus="this.value=''" value="number from 0-255"></input>
+        <input type="number" id="colorbic3" onfocus="this.value=''" value="number from 0-255">B</input>
     </div>
     <button id="btn1">Magic Color</button>
     <script>
@@ -66,40 +87,69 @@
         let b = "";
         let g = "";
         let btn = document.getElementById("btn1");
-
+        let count = 0;
         btn.onclick = function () {
-                r = document.getElementById("colorbic1").value;
-                g = document.getElementById("colorbic2").value;
-                b = document.getElementById("colorbic3").value;
-
+            r = document.getElementById("colorbic1").value;
+            g = document.getElementById("colorbic2").value;
+            b = document.getElementById("colorbic3").value;
+            count++;
+            if (count % 2 == 0) {
                 function alert1() {
-                    if ((r > 255 || r < 0) || (g > 255 || g < 0) || (b > 255 || b < 0)){
-                            alert("number should be between 0-255")
+                    if ((r > 255 || r < 0) || (g > 255 || g < 0) || (b > 255 || b < 0)) {
+                        alert("number should be between 0-255");
+                        return;
+                    } else {
+                        function my(r, g, b) {
+                            y = "rgb(" + r + "," + g + "," + b + ")";
+                            console.log(y)
                         }
-                        else {
-                            console.log("go");
+                        my(r, g, b);
+
+                        function myFunction() {
+                            let z = document.getElementById("color2");
+                            z.style.backgroundColor = y;
                         }
-                    }
-                    alert1();
+                        myFunction();
 
-                    function my(r, g, b) {
-                        y = "rgb(" + r + "," + g + "," + b + ")";
+                        function restfileds() {
+                            r = document.getElementById("colorbic1").value = "";
+                            g = document.getElementById("colorbic2").value = "";
+                            b = document.getElementById("colorbic3").value = "";
+                        }
+                        restfileds();
                     }
-                    my(r, g, b);
+                }
+                alert1();
+            } else {
+                function alert1() {
+                    if ((r > 255 || r < 0) || (g > 255 || g < 0) || (b > 255 || b < 0)) {
+                        alert("number should be between 0-255");
+                        return;
+                    } else {
+                        function my(r, g, b) {
+                            y = "rgb(" + r + "," + g + "," + b + ")";
+                            console.log(y)
+                        }
+                        my(r, g, b);
 
-                    function myFunction() {
-                        let x = document.getElementById("color");
-                        x.style.backgroundColor = y;
-                    }
-                    myFunction();
+                        function myFunction() {
+                            let x = document.getElementById("color");
+                            x.style.backgroundColor = y;
+                        }
+                        myFunction();
 
-                    function restfileds() {
-                        r = document.getElementById("colorbic1").value = "";
-                        g = document.getElementById("colorbic2").value = "";
-                        b = document.getElementById("colorbic3").value = "";
+                        function restfileds() {
+                            r = document.getElementById("colorbic1").value = "";
+                            g = document.getElementById("colorbic2").value = "";
+                            b = document.getElementById("colorbic3").value = "";
+                        }
+                        restfileds();
+
                     }
-                    restfileds();
-                };
+                }
+                alert1();
+            }
+        }
     </script>
 </body>
 
